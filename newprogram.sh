@@ -40,6 +40,10 @@ Flags:
         Specifies that the assignment being created is for extra credit.
         This replaces the \"Problem #\" part of the header.
 
+    -w
+
+        Disable automatic discovery of work type and number.
+
     -p
 
         Prepend the header instead of creating a new file.
