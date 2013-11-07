@@ -4,10 +4,10 @@
 
 SCRIPT_NAME=newprogram
 
-student_name="Shamus Taylor"
-course_name="CSCI 238"
+STUDENT_NAME="Shamus Taylor"
+COURSE_NAME="CSCI 238"
 
-help_string="
+HELP_STRING="
     $SCRIPT_NAME help:
 
 This tool is designed to assist the user in writing programs.
@@ -48,12 +48,12 @@ Flags:
 
         Prepend the header instead of creating a new file.
 
-    -n student_name
+    -n STUDENT_NAME
 
         Adds a name to the header.  Can be used for multiple names.
         For use in collaboration projects.
 
-    -c course_name
+    -c COURSE_NAME
 
         Specifies a different course name.
 "
@@ -72,10 +72,10 @@ while getopts ":hlen:c:wp" opt; do
             problem_string="Extra Credit"
             ;;
         n)
-            student_name="$student_name, $OPTARG"
+            STUDENT_NAME="$STUDENT_NAME, $OPTARG"
             ;;
         c)
-            course_name=$OPTARG
+            COURSE_NAME=$OPTARG
             ;;
         w)
             disable_auto_info=true
@@ -149,12 +149,14 @@ if [ $prepend ]; then
 fi
 
 echo -n "\
-# $student_name
-# $course_name  $work_string $problem_string
+# $STUDENT_NAME
+# $COURSE_NAME  $work_string $problem_string
 # $file_name
 # $DATE
 
 $content" > $file_name
+
+dos2unix $file_name
 
 vi +5 $file_name
 
